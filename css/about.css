@@ -264,7 +264,7 @@
   width: 100px;
   height: 100px;
   border-radius: 20px;
-  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  background: linear-gradient(345deg, #000000, #6c92b0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -430,7 +430,7 @@
 
 .tech-tag {
   padding: 0.6rem 1rem;
-  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  background: linear-gradient(345deg, #000000, #6c92b0);
   color: #ffffff;
   border-radius: 20px;
   font-size: 0.85rem;
