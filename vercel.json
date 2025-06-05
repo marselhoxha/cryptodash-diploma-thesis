@@ -15,30 +15,22 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
+      "source": "/markets",
+      "destination": "/markets.html"
     },
     {
-      "src": "/markets",
-      "dest": "/markets.html"
+      "source": "/charts",
+      "destination": "/charts.html"
     },
     {
-      "src": "/charts",
-      "dest": "/charts.html"
+      "source": "/news",
+      "destination": "/news.html"
     },
     {
-      "src": "/news",
-      "dest": "/news.html"
-    },
-    {
-      "src": "/about",
-      "dest": "/about.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/about",
+      "destination": "/about.html"
     }
   ],
   "headers": [
