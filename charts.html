@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Charts - CryptoDash</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">₿ CryptoDash</div>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="markets.html">Markets</a>
+        <a href="charts.html" class="active">Charts</a>
+        <a href="news.html">News</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="data-status" id="dataStatus">
+          <span class="status-indicator live" id="statusIndicator">●</span>
+          <span class="status-text" id="statusText">Live Data</span>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Ticker -->
+  <div class="live-ticker">
+    <div class="ticker-content">
+      <!-- Populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <section class="charts-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Interactive Charts</h2>
+        <p>Detailed price analysis and trading volume data</p>
+      </div>
+      
+      <!-- Coin Selection -->
+      <div class="chart-controls-section">
+        <div class="coin-selector">
+          <label for="coinSelect">Select Cryptocurrency:</label>
+          <select id="coinSelect" class="coin-select">
+            <option value="bitcoin">Bitcoin (BTC)</option>
+            <option value="ethereum">Ethereum (ETH)</option>
+            <option value="binancecoin">Binance Coin (BNB)</option>
+            <option value="cardano">Cardano (ADA)</option>
+            <option value="solana">Solana (SOL)</option>
+            <option value="polkadot">Polkadot (DOT)</option>
+            <option value="chainlink">Chainlink (LINK)</option>
+            <option value="litecoin">Litecoin (LTC)</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="charts-grid">
+        <!-- Main Chart -->
+        <div class="main-chart-container">
+          <div class="chart-header">
+            <div class="chart-info">
+              <h3 class="chart-title">Bitcoin - 7 Days</h3>
+              <div class="chart-stats">
+                <span class="current-price" id="chartCurrentPrice">$0.00</span>
+                <span class="price-change" id="chartPriceChange">0.00%</span>
+              </div>
+            </div>
+            <div class="chart-controls">
+              <button class="time-btn active" data-period="1">24H</button>
+              <button class="time-btn" data-period="7">7D</button>
+              <button class="time-btn" data-period="30">30D</button>
+              <button class="time-btn" data-period="90">3M</button>
+              <button class="time-btn" data-period="365">1Y</button>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="mainChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Mini Charts -->
+        <div class="mini-charts">
+          <div class="mini-chart-item">
+            <h4>Ethereum</h4>
+            <div class="mini-chart-stats">
+              <span class="mini-price" id="ethPrice">Loading...</span>
+              <span class="mini-change" id="ethChange">0.00%</span>
+            </div>
+            <canvas id="ethChart"></canvas>
+          </div>
+          <div class="mini-chart-item">
+            <h4>Binance Coin</h4>
+            <div class="mini-chart-stats">
+              <span class="mini-price" id="bnbPrice">Loading...</span>
+              <span class="mini-change" id="bnbChange">0.00%</span>
+            </div>
+            <canvas id="bnbChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart Analysis -->
+      <div class="chart-analysis">
+        <div class="analysis-card">
+          <h3>Technical Analysis</h3>
+          <div class="analysis-content">
+            <div class="analysis-item">
+              <span class="analysis-label">24h High:</span>
+              <span class="analysis-value" id="high24h">--</span>
+            </div>
+            <div class="analysis-item">
+              <span class="analysis-label">24h Low:</span>
+              <span class="analysis-value" id="low24h">--</span>
+            </div>
+            <div class="analysis-item">
+              <span class="analysis-label">Volume:</span>
+              <span class="analysis-value" id="volume24h">--</span>
+            </div>
+            <div class="analysis-item">
+              <span class="analysis-label">Market Cap:</span>
+              <span class="analysis-value" id="marketCap">--</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CryptoDash</h3>
+          <p>Your trusted cryptocurrency dashboard for real-time market data and portfolio management.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="markets.html">Market Data</a></li>
+            <li><a href="charts.html">Price Charts</a></li>
+            <li><a href="news.html">Crypto News</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Data Sources</h4>
+          <ul>
+            <li><a href="https://coingecko.com" target="_blank">CoinGecko API</a></li>
+            <li><a href="https://cryptocompare.com" target="_blank">CryptoCompare</a></li>
+            <li><a href="https://alternative.me" target="_blank">Alternative.me</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Disclaimer</h4>
+          <p class="disclaimer">
+            This platform is for informational purposes only. 
+            Cryptocurrency investments carry high risk. 
+            Always do your own research before investing.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CryptoDash by Dionis Hoxha. Real-time cryptocurrency data and portfolio tracking.</p>
+        <p>Data provided by CoinGecko, CryptoCompare, and Alternative.me APIs</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/charts.js"></script>
+</body>
+</html> 

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Markets - CryptoDash</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/markets.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">₿ CryptoDash</div>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="markets.html" class="active">Markets</a>
+        <a href="charts.html">Charts</a>
+        <a href="news.html">News</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="data-status" id="dataStatus">
+          <span class="status-indicator live" id="statusIndicator">●</span>
+          <span class="status-text" id="statusText">Live Data</span>
+        </div>
+        <button class="refresh-btn" onclick="refreshMarketData()">🔄</button>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Ticker -->
+  <div class="live-ticker">
+    <div class="ticker-content">
+      <!-- Populated by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Market Overview Section -->
+  <section class="market-overview-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Global Cryptocurrency Market Overview</h2>
+        <p>Comprehensive real-time statistics, trends, and market sentiment analysis</p>
+      </div>
+      
+      <!-- Market Overview Cards -->
+      <div class="market-overview">
+        <!-- Populated by JavaScript -->
+      </div>
+
+       <!-- Market Education -->
+       <div class="market-education">
+        <div class="education-card">
+          <h3>💡 Understanding Cryptocurrency Markets</h3>
+          <div class="education-content">
+            <div class="education-item">
+              <h4>Market Cap</h4>
+              <p>The total value of all coins in circulation. Calculated as Current Price × Circulating Supply. It indicates the relative size and importance of a cryptocurrency.</p>
+            </div>
+            <div class="education-item">
+              <h4>Trading Volume</h4>
+              <p>The total amount of cryptocurrency traded within a 24-hour period. High volume typically indicates strong interest and liquidity in the market.</p>
+            </div>
+            <div class="education-item">
+              <h4>Price Change %</h4>
+              <p>The percentage change in price over the last 24 hours. Positive values (green) indicate price increases, while negative values (red) show decreases.</p>
+            </div>
+            <div class="education-item">
+              <h4>Circulating Supply</h4>
+              <p>The number of coins currently available and circulating in the market. This affects scarcity and can influence price movements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fear & Greed Index - Dedicated Section -->
+      <div class="fear-greed-standalone">
+        <div class="fear-greed-main-card">
+          <div class="card-header">
+            <h3>🧠 Crypto Fear & Greed Index</h3>
+            <div class="info-tooltip" title="The Fear & Greed Index analyzes emotions and sentiments from different sources and crunches them into one simple number.">ℹ️</div>
+          </div>
+          <div class="fear-greed-content">
+            <div class="fear-greed-left">
+              <div class="fear-greed-meter-large">
+                <div class="meter-bg-large">
+                  <div class="meter-fill-large" id="fearGreedMeter"></div>
+                </div>
+                <div class="meter-value-large" id="fearGreedValue">50</div>
+              </div>
+              <div class="meter-status">
+                <h4 id="fearGreedLabel">Neutral</h4>
+                <p class="meter-subtitle">Market Sentiment</p>
+              </div>
+            </div>
+            <div class="fear-greed-right">
+              <div class="fear-greed-description">
+                <h4>How it works</h4>
+                <p>The index analyzes multiple market factors to determine overall sentiment:</p>
+                <div class="factor-breakdown">
+                  <div class="factor-item">
+                    <span class="factor-percentage">25%</span>
+                    <span class="factor-name">Volatility</span>
+                  </div>
+                  <div class="factor-item">
+                    <span class="factor-percentage">25%</span>
+                    <span class="factor-name">Market Momentum</span>
+                  </div>
+                  <div class="factor-item">
+                    <span class="factor-percentage">15%</span>
+                    <span class="factor-name">Social Media</span>
+                  </div>
+                  <div class="factor-item">
+                    <span class="factor-percentage">10%</span>
+                    <span class="factor-name">Dominance</span>
+                  </div>
+                  <div class="factor-item">
+                    <span class="factor-percentage">10%</span>
+                    <span class="factor-name">Trends</span>
+                  </div>
+                  <div class="factor-item">
+                    <span class="factor-percentage">15%</span>
+                    <span class="factor-name">Surveys</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fear-greed-scale-large">
+                <div class="scale-item-large extreme-fear">
+                  <div class="scale-range">0-24</div>
+                  <div class="scale-label">Extreme Fear</div>
+                  <div class="scale-meaning">Great buying opportunity</div>
+                </div>
+                <div class="scale-item-large fear">
+                  <div class="scale-range">25-49</div>
+                  <div class="scale-label">Fear</div>
+                  <div class="scale-meaning">Market uncertainty</div>
+                </div>
+                <div class="scale-item-large neutral">
+                  <div class="scale-range">50-74</div>
+                  <div class="scale-label">Neutral</div>
+                  <div class="scale-meaning">Balanced sentiment</div>
+                </div>
+                <div class="scale-item-large greed">
+                  <div class="scale-range">75-100</div>
+                  <div class="scale-label">Greed</div>
+                  <div class="scale-meaning">Possible market top</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Cryptocurrencies Table Section -->
+  <section class="currencies-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>💰 Top Cryptocurrencies</h2>
+        <p>Live prices, market data, and detailed analytics for the leading digital assets</p>
+        <div class="market-stats-row">
+          <div class="stat-badge">
+            <span class="stat-value" id="totalCoins">Loading...</span>
+            <span class="stat-label">Total Coins Tracked</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-value" id="activeMarkets">Loading...</span>
+            <span class="stat-label">Active Markets</span>
+          </div>
+          <div class="stat-badge">
+            <span class="stat-value" id="avgChange">Loading...</span>
+            <span class="stat-label">Avg 24h Change</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="crypto-table-container">
+        <div class="table-controls">
+          <div class="table-filters">
+            <div class="search-container">
+              <input type="text" id="cryptoSearch" class="search-box" placeholder="Search cryptocurrencies...">
+              <span class="search-icon">🔍</span>
+            </div>
+            <select class="filter-select" id="sortFilter">
+              <option value="market_cap">Market Cap</option>
+              <option value="price">Price</option>
+              <option value="change">24h Change</option>
+              <option value="volume">Volume</option>
+            </select>
+            <select class="filter-select" id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="defi">DeFi</option>
+              <option value="layer-1">Layer 1</option>
+              <option value="meme">Meme Coins</option>
+              <option value="stablecoin">Stablecoins</option>
+            </select>
+            <select class="filter-select" id="changeFilter">
+              <option value="all">All Changes</option>
+              <option value="gainers">Top Gainers</option>
+              <option value="losers">Top Losers</option>
+            </select>
+          </div>
+          <div class="table-info">
+            <span class="results-count">Showing <span id="resultsCount">--</span> results</span>
+            <span class="update-time">Last updated: <span id="lastUpdate">--</span></span>
+            <button class="refresh-btn" onclick="refreshMarketData()">🔄 Refresh</button>
+          </div>
+        </div>
+        
+        <div class="crypto-table">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th class="rank-header">#</th>
+                <th class="coin-header">
+                  Cryptocurrency
+                  <small>Name / Symbol</small>
+                </th>
+                <th data-sort="price" title="Current market price - Click to sort">
+                  💰 Price
+                  <small>Current</small>
+                </th>
+                <th data-sort="change" title="24-hour price change percentage - Click to sort">
+                  📈 24h Change
+                  <small>Price / %</small>
+                </th>
+                <th data-sort="market_cap" title="Total market value (Price × Circulating Supply) - Click to sort">
+                  🏦 Market Cap
+                  <small>Total Value</small>
+                </th>
+                <th data-sort="volume" title="24-hour trading volume - Click to sort">
+                  📊 Volume (24h)
+                  <small>Trading Activity</small>
+                </th>
+                <th class="supply-header">
+                  🪙 Circulating Supply
+                  <small>Available Coins</small>
+                </th>
+                <th class="chart-header">
+                  📉 7d Trend
+                  <small>Price Chart</small>
+                </th>
+                <th class="actions-header">
+                  ⚡ Actions
+                  <small>Tools</small>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="9" class="text-center">
+                  <div class="loading-shimmer" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <div class="loading-content">
+                      <div class="loading-spinner">⟳</div>
+                      <div>Loading comprehensive market data...</div>
+                      <small>Fetching prices, volumes, and market analytics</small>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CryptoDash</h3>
+          <p>Your trusted cryptocurrency dashboard for real-time market data and portfolio management.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="markets.html">Market Data</a></li>
+            <li><a href="charts.html">Price Charts</a></li>
+            <li><a href="news.html">Crypto News</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Data Sources</h4>
+          <ul>
+            <li><a href="https://coingecko.com" target="_blank">CoinGecko API</a></li>
+            <li><a href="https://cryptocompare.com" target="_blank">CryptoCompare</a></li>
+            <li><a href="https://alternative.me" target="_blank">Alternative.me</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Disclaimer</h4>
+          <p class="disclaimer">
+            This platform is for informational purposes only. 
+            Cryptocurrency investments carry high risk. 
+            Always do your own research before investing.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CryptoDash by Dionis Hoxha. Real-time cryptocurrency data and portfolio tracking.</p>
+        <p>Data provided by CoinGecko, CryptoCompare, and Alternative.me APIs</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+    <script src="js/app.js"></script>
+  <script src="js/markets.js"></script>
+</body>
+</html> 

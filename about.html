@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - CryptoDash</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/about.css">
+  
+  <!-- Fallback styles to ensure content is visible -->
+  <style>
+    .scroll-reveal { opacity: 1 !important; }
+    .fade-in { opacity: 1 !important; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .section-header { text-align: center; margin-bottom: 2rem; }
+    .features-grid, .tech-grid, .team-grid { display: grid; gap: 2rem; margin: 2rem 0; }
+    .feature-card, .tech-item, .team-member { padding: 1.5rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">₿ CryptoDash</div>
+      <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="markets.html">Markets</a>
+        <a href="charts.html">Charts</a>
+        <a href="news.html">News</a>
+        <a href="about.html" class="active">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="data-status" id="dataStatus">
+          <span class="status-indicator live" id="statusIndicator">●</span>
+          <span class="status-text" id="statusText">Live Data</span>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Ticker -->
+  <div class="live-ticker">
+    <div class="ticker-content">
+      <!-- Populated by JavaScript -->
+    </div>
+  </div>
+
+ <!-- Developer Section -->
+ <section class="developer-section">
+  <div class="container">
+    <div class="section-header">
+      <h3>About the Developer</h3>
+      <p>Thesis Diploma Project in Computer Science</p>
+    </div>
+    
+    <div class="developer-content">
+      <div class="developer-profile scroll-reveal">
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">DH</div>
+            <div class="profile-info">
+              <h4 class="developer-name">Dionis Hoxha</h4>
+              <p class="developer-title">Computer Science Graduate</p>
+              <p class="academic-info">Bachelor's Thesis Project • 2025</p>
+            </div>
+          </div>
+          
+          <div class="profile-content">
+            <div class="project-description">
+              <h5>Project Overview</h5>
+              <p>This comprehensive cryptocurrency dashboard platform was developed as the capstone project for my Bachelor's degree in Computer Science. The platform serves as a practical demonstration of modern web development methodologies, real-time data processing, and financial technology applications.</p>
+            </div>
+            
+            <div class="technical-highlights">
+              <h5>Technical Achievements</h5>
+              <div class="achievement-grid">
+                <div class="achievement-item">
+                  <span class="achievement-icon">🌐</span>
+                  <span class="achievement-text">Full-Stack Web Development</span>
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">📊</span>
+                  <span class="achievement-text">Real-Time Data Integration</span>
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">🎨</span>
+                  <span class="achievement-text">Responsive UI/UX Design</span>
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">📈</span>
+                  <span class="achievement-text">Interactive Data Visualization</span>
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">🔗</span>
+                  <span class="achievement-text">API Integration & Management</span>
+                </div>
+                <div class="achievement-item">
+                  <span class="achievement-icon">📱</span>
+                  <span class="achievement-text">Cross-Platform Compatibility</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="academic-context">
+              <h5>Academic Context</h5>
+              <p>This project demonstrates the practical application of computer science principles in financial technology, showcasing skills in software engineering, data structures, algorithms, and human-computer interaction. The platform integrates multiple APIs to provide real-time cryptocurrency market analysis and visualization tools.</p>
+            </div>
+            
+            <div class="project-features">
+              <h5>Key Features Implemented</h5>
+              <ul class="features-list">
+                <li>Real-time cryptocurrency price tracking and market data</li>
+                <li>Interactive charts with multiple timeframe analysis</li>
+                <li>Comprehensive news aggregation and categorization</li>
+                <li>Market sentiment analysis with Fear & Greed Index</li>
+                <li>Advanced filtering and search functionality</li>
+                <li>Responsive design optimized for all devices</li>
+                <li>Dark/Light theme toggle with persistent preferences</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="project-stats scroll-reveal">
+        <div class="stats-card">
+          <h5>Project Statistics</h5>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-number">5</span>
+              <span class="stat-label">Pages</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Cryptocurrencies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">3</span>
+              <span class="stat-label">Data Sources</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">1000+</span>
+              <span class="stat-label">Lines of Code</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="technologies-card">
+          <h5>Technologies Used</h5>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript ES6+</span>
+            <span class="tech-tag">Chart.js</span>
+            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Responsive Design</span>
+            <span class="tech-tag">Git Version Control</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Features Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Platform Features</h2>
+        <p>Comprehensive tools and insights for cryptocurrency market analysis</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">📊</div>
+          <h3>Real-Time Market Data</h3>
+          <p>Access live cryptocurrency prices, market capitalizations, trading volumes, and price changes across 100+ digital assets from multiple reliable data sources.</p>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">📈</div>
+          <h3>Interactive Charts</h3>
+          <p>Analyze price trends with dynamic charts featuring multiple timeframes (24H, 7D, 30D, 3M, 1Y) and comprehensive technical indicators for informed trading decisions.</p>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">📰</div>
+          <h3>Crypto News Hub</h3>
+          <p>Stay informed with curated cryptocurrency news from top sources, featuring smart categorization, sentiment analysis, and real-time market impact assessment.</p>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">🎯</div>
+          <h3>Market Sentiment</h3>
+          <p>Track market psychology with the Fear & Greed Index, providing insights into investor emotions and potential market turning points.</p>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">🔍</div>
+          <h3>Advanced Filtering</h3>
+          <p>Filter and sort cryptocurrencies by price, market cap, volume, and performance metrics with powerful search functionality and custom watchlists.</p>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">📱</div>
+          <h3>Mobile Optimized</h3>
+          <p>Enjoy a seamless experience across all devices with our responsive design that adapts perfectly to desktop, tablet, and mobile screens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section class="tech-stack-section">
+    <div class="container">
+      <div class="section-header">
+        <h3>Built with Modern Technology</h3>
+        <p>Leveraging cutting-edge web technologies and reliable APIs for optimal performance</p>
+      </div>
+      
+      <div class="tech-grid">
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">🌐</span>
+          <span class="tech-item-name">HTML5</span>
+        </div>
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">🎨</span>
+          <span class="tech-item-name">CSS3</span>
+        </div>
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">⚡</span>
+          <span class="tech-item-name">JavaScript ES6+</span>
+        </div>
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">📊</span>
+          <span class="tech-item-name">Chart.js</span>
+        </div>
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">🦎</span>
+          <span class="tech-item-name">CoinGecko API</span>
+        </div>
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">💰</span>
+          <span class="tech-item-name">CryptoCompare</span>
+        </div>
+        <div class="tech-item fade-in">
+          <span class="tech-item-icon">📈</span>
+          <span class="tech-item-name">Alternative.me</span>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+ 
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h3>Frequently Asked Questions</h3>
+        <p>Get answers to common questions about CryptoDash</p>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Is CryptoDash free to use?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, CryptoDash is completely free to use. We provide real-time cryptocurrency data, charts, news, and analysis tools at no cost. Our mission is to make crypto market information accessible to everyone.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>How accurate is the data?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            <p>We source data from reputable APIs including CoinGecko, CryptoCompare, and Alternative.me. Our data is updated in real-time and cross-verified across multiple sources to ensure accuracy and reliability.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Can I use this for trading decisions?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            <p>CryptoDash provides educational and informational content only. While our data is accurate and comprehensive, it should not be considered financial advice. Always conduct your own research and consult professionals before making investment decisions.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Do you store personal data?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            <p>CryptoDash respects your privacy. We only store minimal data necessary for functionality (like theme preferences) locally in your browser. We don't collect personal information or require registration.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>How often is data updated?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            <p>Price data and market statistics are updated every 30 seconds to provide near real-time information. News content is refreshed every 5 minutes, and chart data updates dynamically based on the selected timeframe.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFAQ(this)">
+            <span>Which cryptocurrencies are supported?</span>
+            <span class="faq-toggle">↓</span>
+          </div>
+          <div class="faq-answer">
+            <p>We support 100+ major cryptocurrencies including Bitcoin, Ethereum, and all top market cap coins. Our coverage includes detailed price data, charts, and market statistics for each supported asset.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <h3>Get in Touch</h3>
+      <p>Have questions, suggestions, or feedback? We'd love to hear from you!</p>
+      <div class="contact-buttons">
+        <a href="#" class="contact-btn">📧 Email Us</a>
+        <a href="#" class="contact-btn">🐦 Twitter</a>
+        <a href="#" class="contact-btn">💬 Discord</a>
+        <a href="#" class="contact-btn">📱 Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Sources -->
+  <section class="about-section">
+    <div class="container">
+      <div class="section-header">
+        <h3>Data Sources & APIs</h3>
+        <p>Reliable data providers ensuring accuracy and comprehensive coverage</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">🦎</div>
+          <h3>CoinGecko</h3>
+          <p>Primary source for cryptocurrency prices, market data, and historical charts. Provides comprehensive data for 100+ cryptocurrencies with excellent API reliability.</p>
+          <a href="https://coingecko.com" target="_blank" class="overview-link">Visit CoinGecko →</a>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">📊</div>
+          <h3>CryptoCompare</h3>
+          <p>Latest cryptocurrency news, market analysis, and additional price data for comprehensive coverage and cross-verification of market information.</p>
+          <a href="https://cryptocompare.com" target="_blank" class="overview-link">Visit CryptoCompare →</a>
+        </div>
+        
+        <div class="feature-card scroll-reveal">
+          <div class="feature-icon">📈</div>
+          <h3>Alternative.me</h3>
+          <p>Fear & Greed Index data for market sentiment analysis, providing valuable insights into investor psychology and market trends.</p>
+          <a href="https://alternative.me" target="_blank" class="overview-link">Visit Alternative.me →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="about-section">
+    <div class="container">
+      <div class="disclaimer-section">
+        <h3>Important Disclaimer</h3>
+        <div class="disclaimer-content">
+          <p><strong>Investment Risk:</strong> Cryptocurrency investments carry significant risk. Prices can be extremely volatile and you may lose all or part of your investment.</p>
+          <p><strong>Not Financial Advice:</strong> This platform is for informational and educational purposes only. The data and tools provided should not be considered as financial or investment advice.</p>
+          <p><strong>Do Your Research:</strong> Always conduct your own research and consider consulting with a qualified financial advisor before making investment decisions.</p>
+          <p><strong>Data Accuracy:</strong> While we strive to provide accurate and up-to-date information, we cannot guarantee the accuracy of all data. Please verify information with multiple sources.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CryptoDash</h3>
+          <p>Your trusted cryptocurrency dashboard for real-time market data and portfolio management.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="markets.html">Market Data</a></li>
+            <li><a href="charts.html">Price Charts</a></li>
+            <li><a href="news.html">Crypto News</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Data Sources</h4>
+          <ul>
+            <li><a href="https://coingecko.com" target="_blank">CoinGecko API</a></li>
+            <li><a href="https://cryptocompare.com" target="_blank">CryptoCompare</a></li>
+            <li><a href="https://alternative.me" target="_blank">Alternative.me</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Disclaimer</h4>
+          <p class="disclaimer">
+            This platform is for informational purposes only. 
+            Cryptocurrency investments carry high risk. 
+            Always do your own research before investing.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CryptoDash by Dionis Hoxha. Real-time cryptocurrency data and portfolio tracking.</p>
+        <p>Data provided by CoinGecko, CryptoCompare, and Alternative.me APIs</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/about.js"></script>
+  
+  <!-- Fallback script to ensure content is visible -->
+  <script>
+    // Immediate fallback to show all content
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add revealed class to all scroll-reveal elements
+      document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+        el.classList.add('revealed');
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      
+      // Show all fade-in elements
+      document.querySelectorAll('.fade-in').forEach(function(el) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html> 

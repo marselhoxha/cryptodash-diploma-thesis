@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CryptoDash - Real-time Cryptocurrency Market Data & Portfolio Tracker</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="nav-container">
+      <div class="logo">₿ CryptoDash</div>
+      <nav class="nav-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="markets.html">Markets</a>
+        <a href="charts.html">Charts</a>
+        <a href="news.html">News</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="header-actions">
+        <div class="data-status" id="dataStatus">
+          <span class="status-indicator live" id="statusIndicator">●</span>
+          <span class="status-text" id="statusText">Live Data</span>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner Section -->
+  <section class="hero-banner" id="home">
+    <!-- Animated Background -->
+    <div class="hero-bg-effects">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="floating-particles"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    
+          <div class="hero-content">
+        <div class="hero-text">
+        <h1 class="animated-title">
+          <span class="title-line highlight-text">Master the Crypto Markets with Professional Intelligence</span>
+        </h1>
+        <p class="animated-subtitle">Unlock advanced market analytics, real-time price tracking, and comprehensive insights to make informed investment decisions in the dynamic world of cryptocurrency</p>
+        
+        <div class="hero-stats">
+          <div class="hero-stat animate-on-load" style="animation-delay: 0.2s">
+            <span class="stat-label">Total Market Cap</span>
+            <span class="stat-value" id="heroMarketCap">Loading...</span>
+            <div class="stat-icon">📊</div>
+          </div>
+          <div class="hero-stat animate-on-load" style="animation-delay: 0.4s">
+            <span class="stat-label">24h Volume</span>
+            <span class="stat-value" id="heroVolume">Loading...</span>
+            <div class="stat-icon">💹</div>
+          </div>
+          <div class="hero-stat animate-on-load" style="animation-delay: 0.6s">
+            <span class="stat-label">Bitcoin Price</span>
+            <span class="stat-value" id="heroBtcPrice">Loading...</span>
+            <div class="stat-icon">₿</div>
+          </div>
+          <div class="hero-stat animate-on-load" style="animation-delay: 0.8s">
+            <span class="stat-label">Fear & Greed Index</span>
+            <span class="stat-value" id="heroFearGreed">Loading...</span>
+            <div class="stat-icon">🎯</div>
+          </div>
+        </div>
+        
+        <div class="hero-actions">
+          <a href="markets.html" class="cta-btn primary animated-button">
+            <span class="btn-text">Explore Markets</span>
+            <span class="btn-icon">🚀</span>
+            <div class="btn-ripple"></div>
+          </a>
+          <a href="charts.html" class="cta-btn secondary animated-button">
+            <span class="btn-text">View Charts</span>
+            <span class="btn-icon">📈</span>
+            <div class="btn-ripple"></div>
+          </a>
+    </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="crypto-showcase">
+          <div class="main-coin">
+            <div class="coin-item btc large-coin">₿</div>
+            <div class="coin-pulse"></div>
+          </div>
+          <div class="satellite-coins">
+            <div class="coin-orbit orbit-1">
+              <div class="coin-item eth">Ξ</div>
+            </div>
+            <div class="coin-orbit orbit-2">
+              <div class="coin-item ada">₳</div>
+            </div>
+            <div class="coin-orbit orbit-3">
+              <div class="coin-item dot">●</div>
+            </div>
+            <div class="coin-orbit orbit-4">
+              <div class="coin-item sol">◉</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Live Price Ticker Animation -->
+        <div class="price-ticker-animation">
+          <div class="ticker-line"></div>
+          <div class="price-bubbles">
+            <div class="price-bubble" style="animation-delay: 0s">$67,234</div>
+            <div class="price-bubble" style="animation-delay: 1s">$3,245</div>
+            <div class="price-bubble" style="animation-delay: 2s">$0.52</div>
+          </div>
+        </div>
+        
+        <!-- Data Stream Animation -->
+        <div class="data-stream">
+          <div class="stream-line stream-1"></div>
+          <div class="stream-line stream-2"></div>
+          <div class="stream-line stream-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Ticker -->
+  <div class="live-ticker">
+    <div class="ticker-content">
+      <!-- Populated by JavaScript -->
+      </div>
+      </div>
+
+  <!-- Demo Data Banner -->
+  <div class="demo-banner" id="demoBanner" style="display: none;">
+    <div class="container">
+      <div class="banner-content">
+        <span class="banner-icon">ℹ️</span>
+        <span class="banner-text">
+          <strong>Demo Mode:</strong> Unable to connect to live APIs due to CORS restrictions. 
+          Showing sample data for demonstration purposes.
+        </span>
+        <button class="banner-close" onclick="closeDemoBanner()">×</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Overview Section -->
+  <section class="quick-overview-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Platform Overview</h2>
+        <p>Everything you need to track and analyze cryptocurrency markets</p>
+      </div>
+      
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="overview-icon">📊</div>
+          <h3>Market Data</h3>
+          <p>Real-time prices, market caps, and trading volumes for 100+ cryptocurrencies</p>
+          <a href="markets.html" class="overview-link">View Markets →</a>
+        </div>
+        
+        <div class="overview-card">
+          <div class="overview-icon">📈</div>
+          <h3>Interactive Charts</h3>
+          <p>Detailed price analysis with multiple timeframes and technical indicators</p>
+          <a href="charts.html" class="overview-link">View Charts →</a>
+        </div>
+        
+        <div class="overview-card">
+          <div class="overview-icon">📰</div>
+          <h3>Latest News</h3>
+          <p>Stay informed with breaking news and market analysis from top crypto sources</p>
+          <a href="news.html" class="overview-link">Read News →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Cryptocurrencies Preview -->
+  <section class="top-cryptos-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2>Top Cryptocurrencies</h2>
+        <p>Live data for the leading digital assets</p>
+      </div>
+      
+      <div class="crypto-preview-table">
+        <table class="preview-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Coin</th>
+              <th>Price</th>
+              <th>24h Change</th>
+              <th>Market Cap</th>
+            </tr>
+          </thead>
+          <tbody id="topCryptosPreview">
+            <!-- Populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="preview-actions">
+        <a href="markets.html" class="btn-primary">View All Markets</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CryptoDash</h3>
+          <p>Your trusted cryptocurrency dashboard for real-time market data and price analysis.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">GitHub</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">LinkedIn</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="markets.html">Market Data</a></li>
+            <li><a href="charts.html">Price Charts</a></li>
+            <li><a href="news.html">Crypto News</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Data Sources</h4>
+          <ul>
+            <li><a href="https://coingecko.com" target="_blank">CoinGecko API</a></li>
+            <li><a href="https://cryptocompare.com" target="_blank">CryptoCompare</a></li>
+            <li><a href="https://alternative.me" target="_blank">Alternative.me</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Disclaimer</h4>
+          <p class="disclaimer">
+            This platform is for informational purposes only. 
+            Cryptocurrency investments carry high risk. 
+            Always do your own research before investing.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CryptoDash by Dionis Hoxha. Real-time cryptocurrency data and market analysis.</p>
+        <p>Data provided by CoinGecko, CryptoCompare, and Alternative.me APIs</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
