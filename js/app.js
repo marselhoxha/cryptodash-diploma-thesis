@@ -15,9 +15,9 @@ class CryptoAPI {
     
     // CORS proxy options (try multiple proxies for reliability)
     this.corsProxies = [
-      'https://api.allorigins.win/raw?url=',
-      'https://cors-anywhere.herokuapp.com/',
-      'https://thingproxy.freeboard.io/fetch/'
+      'https://api.allorigins.win/get?url=',
+      'https://corsproxy.io/?',
+      'https://proxy.cors.sh/'
     ];
     this.currentProxyIndex = 0;
     
@@ -31,6 +31,13 @@ class CryptoAPI {
     // Track data source status
     this.dataSourceStatus = 'unknown'; // 'live', 'proxy', 'mock'
     this.updateStatusIndicator();
+    
+    // Show demo banner initially as fallback
+    setTimeout(() => {
+      if (this.dataSourceStatus === 'unknown' || this.dataSourceStatus === 'mock') {
+        this.showDemoBanner();
+      }
+    }, 3000); // Show after 3 seconds if no successful API calls
   }
 
   initializeMockData() {
@@ -137,7 +144,7 @@ class CryptoAPI {
       fearGreed: {
         data: [{
           value: "65",
-          value_classification: "Greed",
+          value_classification: "Neutral",
           timestamp: Date.now()
         }]
       },
@@ -182,16 +189,22 @@ class CryptoAPI {
       return this.cache.get(cacheKey);
     }
 
-    // Try direct fetch first
+    // Try direct fetch first with timeout
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+      
       const response = await fetch(url, {
         ...options,
+        signal: controller.signal,
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           ...options.headers
         }
       });
+      
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -222,20 +235,31 @@ class CryptoAPI {
         try {
           console.log(`Trying CORS proxy ${proxyIndex + 1}:`, proxy);
           
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout for proxies
+          
           const response = await fetch(proxiedUrl, {
             ...options,
+            signal: controller.signal,
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
               ...options.headers
             }
           });
+          
+          clearTimeout(timeoutId);
 
           if (!response.ok) {
             throw new Error(`Proxy HTTP error! status: ${response.status}`);
           }
 
-          const data = await response.json();
+          let data = await response.json();
+          
+          // Handle allorigins.win response format
+          if (proxy.includes('allorigins.win') && data.contents) {
+            data = JSON.parse(data.contents);
+          }
           
           // Store in cache and update successful proxy
           this.cache.set(cacheKey, data);
@@ -259,10 +283,11 @@ class CryptoAPI {
       // All proxies failed, return mock data
       console.warn(`All requests failed for ${url}, using mock data`);
       
-      // Update status to mock data
+      // Update status to mock data and show demo banner
       if (this.dataSourceStatus !== 'mock') {
         this.dataSourceStatus = 'mock';
         this.updateStatusIndicator();
+        this.showDemoBanner();
       }
       
       return this.getMockDataForUrl(url);
@@ -371,6 +396,14 @@ class CryptoAPI {
     if (change === null || change === undefined) return 'N/A';
     const sign = change >= 0 ? '+' : '';
     return `${sign}${change.toFixed(2)}%`;
+  }
+
+  // Show demo banner
+  showDemoBanner() {
+    const demoBanner = document.getElementById('demoBanner');
+    if (demoBanner) {
+      demoBanner.style.display = 'block';
+    }
   }
 
   // Update data source status
