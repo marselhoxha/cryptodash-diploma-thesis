@@ -181,6 +181,18 @@ body {
   50% { opacity: 0.5; }
 }
 
+/* Error Messages */
+.error-message {
+  color: #ff6b6b;
+  font-weight: 500;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--border-color);

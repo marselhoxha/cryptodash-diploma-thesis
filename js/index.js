@@ -8,10 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function initHomePage() {
   try {
+    // Wait for global objects to be available
+    if (!window.dashboard || !window.cryptoAPI) {
+      console.log('Waiting for global objects...');
+      setTimeout(initHomePage, 100);
+      return;
+    }
+
     // Initialize hero stats and ticker
     await Promise.all([
-      dashboard.renderHeroStats(),
-      dashboard.startLiveTicker(),
+      window.dashboard.renderHeroStats(),
+      window.dashboard.startLiveTicker(),
       renderTopCryptosPreview()
     ]);
     
@@ -260,7 +267,7 @@ async function renderTopCryptosPreview() {
   tbody.innerHTML = '<tr><td colspan="5" class="text-center">Loading...</td></tr>';
 
   try {
-    const cryptos = await cryptoAPI.getTopCryptos(5); // Get top 5
+    const cryptos = await window.cryptoAPI.getTopCryptos(5); // Get top 5
     
     tbody.innerHTML = cryptos.map((crypto, index) => {
       const change24h = crypto.price_change_percentage_24h || 0;
@@ -278,17 +285,17 @@ async function renderTopCryptosPreview() {
               </div>
             </div>
           </td>
-          <td>${cryptoAPI.formatPrice(crypto.current_price)}</td>
+          <td>${window.cryptoAPI.formatPrice(crypto.current_price)}</td>
           <td class="price-change ${changeClass}">
-            ${cryptoAPI.formatPercentage(change24h)}
+            ${window.cryptoAPI.formatPercentage(change24h)}
           </td>
-          <td>${cryptoAPI.formatLargeNumber(crypto.market_cap)}</td>
+          <td>${window.cryptoAPI.formatLargeNumber(crypto.market_cap)}</td>
         </tr>
       `;
     }).join('');
   } catch (error) {
     console.error('Error rendering top cryptos preview:', error);
-    tbody.innerHTML = '<tr><td colspan="5" class="text-center">Error loading data</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="5" class="text-center error-message">Error loading cryptocurrency data. Please refresh the page.</td></tr>';
   }
 }
 
